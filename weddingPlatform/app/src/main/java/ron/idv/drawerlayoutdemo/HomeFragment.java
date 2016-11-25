@@ -9,6 +9,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,16 +17,26 @@ import java.util.List;
 public class HomeFragment extends Fragment {
     private List<Member> memberList;
     private ViewPager vpMember;
+    LinearLayout mLinearLayout;
+    MyPageIndicator mIndicator;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View view = inflater.inflate(R.layout.home_fragment, container, false);
+        mLinearLayout = (LinearLayout) view.findViewById(R.id.pagesContainer);
+
         List<Member> memberList = getMemberList();
         MemberAdapter memberAdapter = new MemberAdapter(getActivity().getSupportFragmentManager(), memberList);
         vpMember = (ViewPager) view.findViewById(R.id.vpMember);
         vpMember.setAdapter(memberAdapter);
+
+
+
+        mIndicator = new MyPageIndicator(getContext(), mLinearLayout, vpMember, R.drawable.indicator_circle);
+        mIndicator.setPageCount(memberList.size());
+        mIndicator.show();
 
         return view;
     }

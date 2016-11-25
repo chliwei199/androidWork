@@ -38,14 +38,14 @@ public class MemberFragment extends Fragment {
         ImageView ivImage = (ImageView) view
                 .findViewById(R.id.ivImage);
         ivImage.setImageResource(member.getImage());
-
-        TextView tvId = (TextView) view
-                .findViewById(R.id.tvId);
-        tvId.setText(Integer.toString(member.getId()));
-
-        TextView tvName = (TextView) view
-                .findViewById(R.id.tvName);
-        tvName.setText(member.getName());
+//
+//        TextView tvId = (TextView) view
+//                .findViewById(R.id.tvId);
+//        tvId.setText(Integer.toString(member.getId()));
+//
+//        TextView tvName = (TextView) view
+//                .findViewById(R.id.tvName);
+//        tvName.setText(member.getName());
         return view;
     }
 }
